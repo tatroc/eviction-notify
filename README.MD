@@ -1,7 +1,9 @@
-# Installation and Setup of eviction_notify
+# Description
 
 Use eviction-notify service to notify Jenkins that your Azure Spot Instance has been evicted and should be truned back on.
-For more details refernece my [detailed blog post](https://www.blazemeter.com/blog/the-new-http2-plugin-for-jmeter-the-complete-guide)  
+For more details refernece my [detailed blog post](https://runops.wordpress.com/?p=1398)  
+
+## Installation and Setup of eviction_notify
 
 ## Setp 1
 
@@ -27,6 +29,8 @@ Parameter name: TENANT
 Descrition Azure Tenant
 Defaults: set your tenant as the defualt value
 
+![Jenkins Parameters](images/jenkins.png)
+
 ## Step 2
 
 Setup Jenkins credential username/password with and name the credential the same name as the Azure subscription
@@ -40,6 +44,8 @@ Setup a user who has permissions to run the Jenkins Job
 Create API token for the user
 
 Go to the user's profile then add new Token, save the token as after you exit this screen the token will not longer be accessible. 
+
+![Jenkins Parameters](images/jenkins-token.png`)
 
 ## Step 4
 
@@ -62,4 +68,3 @@ Copy eviction-notify.service to /etc/systemd/system/eviction-notify.service
 systemctl enable eviction-notify && systemctl start eviction-notify
 
 
-![Jenkins Parameters](images/jenkins.png)
