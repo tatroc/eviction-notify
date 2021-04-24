@@ -1,0 +1,18 @@
+[Unit]
+Description=fl-eviction
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+# Command to execute when the service is started
+Restart=on-failure
+RestartSec=5s
+
+Environment="JENKINS_USERNAME=admin"
+Environment="JENKINS_PASSWORD={My jenkins token}"
+Environment="JENKINS_URI=http://10.111.252.21:8080/job/automation/job/startvm/buildWithParameters?"
+ExecStart=/usr/bin/python3 /opt/eviction_notify.py
+
+
+[Install]
+WantedBy=multi-user.target
