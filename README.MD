@@ -33,9 +33,17 @@ Defaults: set your tenant as the defualt value
 
 ## Step 2
 
+Create a service principle in Azure [using this guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)  
+The service principle must have permissions to turn on/off VMs. You can use the built Role [Virtual Machine Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) however this is far to much permissions.  
+
+I recommend create a custom role which only has VM start/stop permissions. There is a good post [Stackoverflow](https://stackoverflow.com/questions/23668154/allow-users-to-start-stop-particular-azure-vms/49925159)  
+
+Once you have the service principle created, setup the credential in Jenkins.  
 Setup Jenkins credential username/password with and name the credential the same name as the Azure subscription  
 For example: a6074dfd-ce1d-4687-af3a-6e7c3d2d6852  
 This way when the HTTP POST comes in from the VM, the parameter subscription_id will be used to 'lookup' the correct Azure SPN username/password. Which will be used by the az cli to login and start the VM.
+
+![Jenkins Parameters](images/jenkins-cred.png)
 
 ## Step 3
 
