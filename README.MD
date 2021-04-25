@@ -3,6 +3,7 @@
 Use eviction-notify service to notify Jenkins that your Azure Spot Instance which has been evicted should be turned back on.
 For more details refernece my [detailed blog post](https://runops.wordpress.com/?p=1398)  
 
+![eviction_notify process diagram](images/spot-instance-process.png)
 ## Installation and Setup of eviction_notify
 
 ## Setp 1
